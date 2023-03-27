@@ -1,0 +1,1551 @@
+project
+  activity_prototypes_libraries control.mal eigen3_geometry.mal math.mal ros.mal ros_geometry_msgs_tools.mal ros_nav_msgs_tools.mal ros_sensor_msgs_tools.mal std_lib.mal
+  processing_project
+    processing_graph
+      title untitled
+      id 157
+      geometry 0 0 1645 606
+      minimum_size 80 40
+      processing_node
+        title twist dis
+        id 183
+        geometry 878.434 71 80 42
+        minimum_size 80 42
+        library ros_geometry_msgs_tools
+        description twist_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title linear dis
+        id 184
+        geometry 1053.35 36 80 60
+        minimum_size 80 60
+        library ros_geometry_msgs_tools
+        description vector3_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title angular dis
+        id 185
+        geometry 1189.35 239 88.4219 60
+        minimum_size 80 60
+        library ros_geometry_msgs_tools
+        description vector3_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title diss point
+        id 189
+        geometry 278.068 201 80.0625 60
+        minimum_size 80 60
+        library ros_geometry_msgs_tools
+        description point_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title pose dis
+        id 190
+        geometry 170.983 262 80 42
+        minimum_size 80 42
+        library ros_geometry_msgs_tools
+        description pose_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title diss twist
+        id 191
+        geometry 458.983 373 80 78
+        minimum_size 80 78
+        library ros_geometry_msgs_tools
+        description quaternion_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title to quaternion
+        id 192
+        geometry 633.983 372 101.813 78
+        minimum_size 80 78
+        library march_eigen3_geometry
+        description quaternion_create
+        mode direct
+        input_connector
+          name w
+          queue_size 1
+        end
+        input_connector
+          name x
+          queue_size 1
+        end
+        input_connector
+          name y
+          queue_size 1
+        end
+        input_connector
+          name z
+          queue_size 1
+        end
+      end
+      processing_node
+        title to ypr
+        id 193
+        geometry 762.897 371 80 60
+        minimum_size 80 60
+        library march_eigen3_geometry
+        description quaternion_to_ypr
+        mode direct
+        input_connector
+          name quaternion
+          queue_size 1
+        end
+      end
+      processing_node
+        title dx^2
+        id 213
+        geometry 663.145 200 80 42
+        minimum_size 80 42
+        library march_math
+        description multiplication
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title dy^2
+        id 214
+        geometry 654.145 250 80 42
+        minimum_size 80 42
+        library march_math
+        description multiplication
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title rho^2
+        id 215
+        geometry 798.145 219 80 42
+        minimum_size 80 42
+        library march_math
+        description addition
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title rho
+        id 216
+        geometry 909.145 210 80 40
+        minimum_size 80 40
+        library march_math
+        description sqrt
+        mode direct
+        input_connector
+          name argument
+          queue_size 1
+        end
+      end
+      processing_node
+        title dx
+        id 224
+        geometry 487.865 201 80 42
+        minimum_size 80 42
+        library march_math
+        description substraction
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title dy
+        id 225
+        geometry 488.145 250 80 42
+        minimum_size 80 42
+        library march_math
+        description substraction
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title atan2(dy,dx)
+        id 235
+        geometry 657.094 306 95.5938 42
+        minimum_size 80 42
+        library march_math
+        description atan2
+        mode direct
+        input_connector
+          name arg0
+          queue_size 1
+        end
+        input_connector
+          name arg1
+          queue_size 1
+        end
+      end
+      processing_node
+        title alpha
+        id 238
+        geometry 926.609 307 80 42
+        minimum_size 80 42
+        library march_math
+        description substraction
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title beta
+        id 241
+        geometry 927.609 370 80 42
+        minimum_size 80 42
+        library march_math
+        description substraction
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+          initial_message
+            type std_msgs/float64
+            field data 0
+          end
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title v=krho*rho
+        id 243
+        geometry 1042.29 233 90.0156 42
+        minimum_size 80 42
+        library march_math
+        description multiplication
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+          initial_message
+            type std_msgs/float64
+            field data 3
+          end
+        end
+      end
+      processing_node
+        title kalpha*alpha
+        id 244
+        geometry 1198 304 100.688 42
+        minimum_size 80 42
+        library march_math
+        description multiplication
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+          initial_message
+            type std_msgs/float64
+            field data 8
+          end
+        end
+      end
+      processing_node
+        title kbeta*beta
+        id 245
+        geometry 1238 387 88.4375 42
+        minimum_size 80 42
+        library march_math
+        description multiplication
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+          initial_message
+            type std_msgs/float64
+            field data -4
+          end
+        end
+      end
+      processing_node
+        title angular
+        id 246
+        geometry 1351.99 320 80 42
+        minimum_size 80 42
+        library march_math
+        description addition
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title angle_mod
+        id 248
+        geometry 1036.61 301 88.9375 40
+        minimum_size 80 40
+        library march_math
+        description angle_mod
+        mode direct
+        input_connector
+          name argument
+          queue_size 1
+        end
+      end
+      processing_node
+        title angle_mod
+        id 249
+        geometry 1039 398 88.9375 40
+        minimum_size 80 40
+        library march_math
+        description angle_mod
+        mode direct
+        input_connector
+          name argument
+          queue_size 1
+        end
+      end
+      processing_node
+        title clamp
+        id 256
+        geometry 1405.61 105 80 60
+        minimum_size 80 60
+        library march_math
+        description clamp
+        mode direct
+        input_connector
+          name arg0
+          queue_size 1
+        end
+        input_connector
+          name arg1
+          queue_size 1
+        end
+        input_connector
+          name arg2
+          queue_size 1
+        end
+      end
+      processing_node
+        title clamp
+        id 257
+        geometry 1555 236 80 60
+        minimum_size 80 60
+        library march_math
+        description clamp
+        mode direct
+        input_connector
+          name arg0
+          queue_size 1
+        end
+        input_connector
+          name arg1
+          queue_size 1
+        end
+        input_connector
+          name arg2
+          queue_size 1
+        end
+      end
+      processing_node
+        title -v_max
+        id 269
+        geometry 1268.82 30 80 42
+        minimum_size 80 42
+        library march_math
+        description substraction
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+          initial_message
+            type std_msgs/float64
+            field data 0
+          end
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title -omega_max
+        id 273
+        geometry 1385.15 249 98.5938 42
+        minimum_size 80 42
+        library march_math
+        description substraction
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title pose stamped dis
+        id 330
+        geometry 10 252 122.266 42
+        minimum_size 80 42
+        library ros_geometry_msgs_tools
+        description pose_stamped_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title diss pose
+        id 484
+        geometry 174 487 80 42
+        minimum_size 80 42
+        library ros_geometry_msgs_tools
+        description pose_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title diss point
+        id 485
+        geometry 300 452 80.0625 60
+        minimum_size 80 60
+        library ros_geometry_msgs_tools
+        description point_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title diss quat
+        id 486
+        geometry 301 518 80 78
+        minimum_size 80 78
+        library ros_geometry_msgs_tools
+        description quaternion_dissassemble
+        mode direct
+        input_connector
+          name message
+          queue_size 1
+        end
+      end
+      processing_node
+        title to quat
+        id 487
+        geometry 430 518 80 78
+        minimum_size 80 78
+        library march_eigen3_geometry
+        description quaternion_create
+        mode direct
+        input_connector
+          name w
+          queue_size 1
+        end
+        input_connector
+          name x
+          queue_size 1
+        end
+        input_connector
+          name y
+          queue_size 1
+        end
+        input_connector
+          name z
+          queue_size 1
+        end
+      end
+      processing_node
+        title to ypr
+        id 488
+        geometry 561 518 80 60
+        minimum_size 80 60
+        library march_eigen3_geometry
+        description quaternion_to_ypr
+        mode direct
+        input_connector
+          name quaternion
+          queue_size 1
+        end
+      end
+      processing_node
+        title krho
+        id 500
+        geometry 909 257 80 40
+        minimum_size 80 40
+        library march_std_lib
+        description output_float64
+        mode direct
+        input_connector
+          name value
+          queue_size 1
+        end
+        parameters
+        end
+        parameter_references
+          value krho
+        end
+      end
+      processing_node
+        title kalpha
+        id 501
+        geometry 1092 351 80 40
+        minimum_size 80 40
+        library march_std_lib
+        description output_float64
+        mode direct
+        input_connector
+          name value
+          queue_size 1
+        end
+        parameters
+        end
+        parameter_references
+          value kalpha
+        end
+      end
+      processing_node
+        title kbeta
+        id 502
+        geometry 1129 440 80 40
+        minimum_size 80 40
+        library march_std_lib
+        description output_float64
+        mode direct
+        input_connector
+          name value
+          queue_size 1
+        end
+        parameters
+        end
+        parameter_references
+          value kbeta
+        end
+      end
+    end
+    title reach_point
+    connector
+      id 159
+      output
+      external_data_connector_model
+        name cmd_position
+        type ros_geometry_msgs/pose_stamped
+        position 116.351 167
+      end
+    end
+    connector
+      id 167
+      output
+      external_data_connector_model
+        name cmd_max_vel
+        type ros_geometry_msgs/twist
+        position 816.266 77
+      end
+    end
+    connector
+      id 478
+      input
+      external_data_connector_model
+        name linear
+        type std_msgs/float64
+        position 2292.28 0
+      end
+    end
+    connector
+      id 479
+      input
+      external_data_connector_model
+        name angular
+        type std_msgs/float64
+        position 2306.28 1310
+      end
+    end
+    connector
+      id 483
+      output
+      external_data_connector_model
+        name current_position
+        type ros_geometry_msgs/pose
+        position 124 496
+      end
+    end
+    connection
+      id 186
+      priority 0
+      connector_id 167
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 183
+        attachment_name message
+        attachment_type ros_geometry_msgs/twist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 187
+      priority 0
+      attached_data_connector_model
+        activity 183
+        attachment_name linear
+        attachment_type ros_geometry_msgs/vector3
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 184
+        attachment_name message
+        attachment_type ros_geometry_msgs/vector3
+      end
+      data_connection_model 0
+    end
+    connection
+      id 188
+      priority 0
+      attached_data_connector_model
+        activity 183
+        attachment_name angular
+        attachment_type ros_geometry_msgs/vector3
+      end
+      middle_point 0.87243 0.429487
+      attached_data_connector_model
+        activity 185
+        attachment_name message
+        attachment_type ros_geometry_msgs/vector3
+      end
+      data_connection_model 0
+    end
+    connection
+      id 194
+      priority 0
+      attached_data_connector_model
+        activity 190
+        attachment_name position
+        attachment_type ros_geometry_msgs/point
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 189
+        attachment_name message
+        attachment_type ros_geometry_msgs/point
+      end
+      data_connection_model 0
+    end
+    connection
+      id 195
+      priority 0
+      attached_data_connector_model
+        activity 190
+        attachment_name orientation
+        attachment_type ros_geometry_msgs/quaternion
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 191
+        attachment_name message
+        attachment_type ros_geometry_msgs/quaternion
+      end
+      data_connection_model 0
+    end
+    connection
+      id 196
+      priority 0
+      attached_data_connector_model
+        activity 191
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 192
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 197
+      priority 0
+      attached_data_connector_model
+        activity 191
+        attachment_name y
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 192
+        attachment_name y
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 198
+      priority 0
+      attached_data_connector_model
+        activity 191
+        attachment_name z
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 192
+        attachment_name z
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 199
+      priority 0
+      attached_data_connector_model
+        activity 191
+        attachment_name w
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 192
+        attachment_name w
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 204
+      priority 0
+      attached_data_connector_model
+        activity 192
+        attachment_name quaternion
+        attachment_type eigen3_geometry_msgs/quaternion
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 193
+        attachment_name quaternion
+        attachment_type eigen3_geometry_msgs/quaternion
+      end
+      data_connection_model 0
+    end
+    connection
+      id 221
+      priority 0
+      attached_data_connector_model
+        activity 213
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 215
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 222
+      priority 0
+      attached_data_connector_model
+        activity 214
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 215
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 223
+      priority 0
+      attached_data_connector_model
+        activity 215
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 216
+        attachment_name argument
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 226
+      priority 0
+      attached_data_connector_model
+        activity 189
+        attachment_name y
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 225
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 227
+      priority 0
+      attached_data_connector_model
+        activity 189
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 224
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 230
+      priority 0
+      attached_data_connector_model
+        activity 224
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 213
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 231
+      priority 0
+      attached_data_connector_model
+        activity 224
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.763377 -0.136364
+      attached_data_connector_model
+        activity 213
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 232
+      priority 0
+      attached_data_connector_model
+        activity 225
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 214
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 233
+      priority 0
+      attached_data_connector_model
+        activity 225
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.795455 -0.166667
+      attached_data_connector_model
+        activity 214
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 236
+      priority 0
+      attached_data_connector_model
+        activity 225
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.482218 0.5
+      attached_data_connector_model
+        activity 235
+        attachment_name arg0
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 237
+      priority 0
+      attached_data_connector_model
+        activity 224
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.285215 0.149573
+      attached_data_connector_model
+        activity 235
+        attachment_name arg1
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 247
+      priority 0
+      attached_data_connector_model
+        activity 216
+        attachment_name result
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 243
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 250
+      priority 0
+      attached_data_connector_model
+        activity 238
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 248
+        attachment_name argument
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 251
+      priority 0
+      attached_data_connector_model
+        activity 241
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 249
+        attachment_name argument
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 252
+      priority 0
+      attached_data_connector_model
+        activity 248
+        attachment_name result
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 244
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 253
+      priority 0
+      attached_data_connector_model
+        activity 249
+        attachment_name result
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 245
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 254
+      priority 0
+      attached_data_connector_model
+        activity 244
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 246
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 255
+      priority 0
+      attached_data_connector_model
+        activity 245
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 246
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 260
+      priority 0
+      attached_data_connector_model
+        activity 243
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.0622358 0.8
+      attached_data_connector_model
+        activity 256
+        attachment_name arg0
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 264
+      priority 0
+      attached_data_connector_model
+        activity 246
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 257
+        attachment_name arg0
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 270
+      priority 0
+      attached_data_connector_model
+        activity 184
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 269
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 271
+      priority 0
+      attached_data_connector_model
+        activity 269
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 256
+        attachment_name arg1
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 272
+      priority 0
+      attached_data_connector_model
+        activity 184
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.233343 0.458678
+      attached_data_connector_model
+        activity 256
+        attachment_name arg2
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 274
+      priority 0
+      attached_data_connector_model
+        activity 185
+        attachment_name z
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.209016 0.376353
+      attached_data_connector_model
+        activity 273
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 275
+      priority 0
+      attached_data_connector_model
+        activity 273
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 257
+        attachment_name arg1
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 276
+      priority 0
+      attached_data_connector_model
+        activity 185
+        attachment_name z
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.102125 0.629771
+      attached_data_connector_model
+        activity 257
+        attachment_name arg2
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 331
+      priority 0
+      connector_id 159
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 330
+        attachment_name message
+        attachment_type ros_geometry_msgs/pose_stamped
+      end
+      data_connection_model 0
+    end
+    connection
+      id 332
+      priority 0
+      attached_data_connector_model
+        activity 330
+        attachment_name pose
+        attachment_type ros_geometry_msgs/pose
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 190
+        attachment_name message
+        attachment_type ros_geometry_msgs/pose
+      end
+      data_connection_model 0
+    end
+    connection
+      id 435
+      priority 0
+      attached_data_connector_model
+        activity 235
+        attachment_name result
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 238
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 476
+      priority 0
+      attached_data_connector_model
+        activity 235
+        attachment_name result
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.688632 0.394737
+      attached_data_connector_model
+        activity 241
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 477
+      priority 0
+      attached_data_connector_model
+        activity 193
+        attachment_name yaw
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 241
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 480
+      priority 0
+      attached_data_connector_model
+        activity 257
+        attachment_name result
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 479
+      data_connection_model 0
+    end
+    connection
+      id 481
+      priority 0
+      attached_data_connector_model
+        activity 256
+        attachment_name result
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 478
+      data_connection_model 0
+    end
+    connection
+      id 489
+      priority 0
+      connector_id 483
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 484
+        attachment_name message
+        attachment_type ros_geometry_msgs/pose
+      end
+      data_connection_model 0
+    end
+    connection
+      id 490
+      priority 0
+      attached_data_connector_model
+        activity 484
+        attachment_name position
+        attachment_type ros_geometry_msgs/point
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 485
+        attachment_name message
+        attachment_type ros_geometry_msgs/point
+      end
+      data_connection_model 0
+    end
+    connection
+      id 491
+      priority 0
+      attached_data_connector_model
+        activity 485
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 224
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 492
+      priority 0
+      attached_data_connector_model
+        activity 485
+        attachment_name y
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 225
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 493
+      priority 0
+      attached_data_connector_model
+        activity 484
+        attachment_name orientation
+        attachment_type ros_geometry_msgs/quaternion
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 486
+        attachment_name message
+        attachment_type ros_geometry_msgs/quaternion
+      end
+      data_connection_model 0
+    end
+    connection
+      id 494
+      priority 0
+      attached_data_connector_model
+        activity 486
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 487
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 495
+      priority 0
+      attached_data_connector_model
+        activity 486
+        attachment_name y
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 487
+        attachment_name y
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 496
+      priority 0
+      attached_data_connector_model
+        activity 486
+        attachment_name z
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 487
+        attachment_name z
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 497
+      priority 0
+      attached_data_connector_model
+        activity 486
+        attachment_name w
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 487
+        attachment_name w
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 498
+      priority 0
+      attached_data_connector_model
+        activity 487
+        attachment_name quaternion
+        attachment_type eigen3_geometry_msgs/quaternion
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 488
+        attachment_name quaternion
+        attachment_type eigen3_geometry_msgs/quaternion
+      end
+      data_connection_model 0
+    end
+    connection
+      id 499
+      priority 0
+      attached_data_connector_model
+        activity 488
+        attachment_name yaw
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.890009 -1.2
+      attached_data_connector_model
+        activity 238
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 503
+      priority 0
+      attached_data_connector_model
+        activity 500
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 243
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 504
+      priority 0
+      attached_data_connector_model
+        activity 502
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 245
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 505
+      priority 0
+      attached_data_connector_model
+        activity 501
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 244
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    parameter float64 krho 0
+    parameter float64 kalpha 0
+    parameter float64 kbeta 0
+  end
+end

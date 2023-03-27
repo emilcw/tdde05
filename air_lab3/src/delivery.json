@@ -1,0 +1,170 @@
+{
+    "children": [
+        {
+            "children": [],
+            "common_params": {},
+            "name": "move",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 7,
+                    "y": 1,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "deliver_box",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 7,
+                    "y": 1,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "move",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 8,
+                    "y": 7,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "deliver_box",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 8,
+                    "y": 7,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "move",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 7,
+                    "y": 1,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "move",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 14,
+                    "y": 7,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "deliver_box",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 14,
+                    "y": 7,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "move",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 5,
+                    "y": 9,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "deliver_box",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 5,
+                    "y": 9,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "move",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 13,
+                    "y": 15,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "deliver_box",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 13,
+                    "y": 15,
+                    "z": 0
+                }
+            }
+        },
+        {
+            "children": [],
+            "common_params": {},
+            "name": "move",
+            "params": {
+                "p": {
+                    "rostype": "Point",
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "use-motion-planner": false
+            }
+        }
+    ],
+    "common_params": {},
+    "name": "seq",
+    "params": {}
+}

@@ -1,0 +1,7 @@
+<library path="lib/libair_lab1_nodelets">
+  <class name="air_lab1/husky_control_node" type="husky_control_node" base_class_type="nodelet::Nodelet">
+    <description>
+      Husky control node.
+    </description>
+  </class>
+</library>

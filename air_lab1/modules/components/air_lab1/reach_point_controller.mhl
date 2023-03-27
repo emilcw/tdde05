@@ -1,0 +1,325 @@
+project
+  activity_prototypes_libraries ../../air_lab1.mal control.mal eigen3_geometry.mal math.mal ros.mal ros_geometry_msgs_tools.mal ros_nav_msgs_tools.mal ros_sensor_msgs_tools.mal std_lib.mal
+  component
+    super_state
+      timeout 0
+      title reach_point_controller
+      id 0
+      geometry 10 30 515.016 513
+      minimum_size 80 40
+      group
+        title reach_point_controller
+        id 1
+        geometry 10 30 495.016 473
+        minimum_size 100 80
+        activity_state
+          timeout 0
+          title reach point
+          id 2
+          geometry 368 403 117.016 60
+          minimum_size 80 60
+          library air_lab1_march
+          description reach_point
+          mode direct
+          input_connector
+            name cmd_position
+            queue_size 1
+          end
+          input_connector
+            name cmd_max_vel
+            queue_size 1
+          end
+          input_connector
+            name current_position
+            queue_size 1
+          end
+          parameters
+          end
+          parameter_references
+            krho krho
+            kalpha kalpha
+            kbeta kbeta
+          end
+        end
+        activity_state
+          timeout 0
+          title idle
+          id 3
+          geometry 10 30 80 40
+          minimum_size 80 40
+          library march_std_lib
+          description output_float64
+          mode direct
+          input_connector
+            name value
+            queue_size 1
+          end
+          parameters
+          end
+          parameter_references
+          end
+        end
+        activity_state
+          timeout 0
+          title point_reached
+          id 19
+          geometry 187 89 133.813 40
+          minimum_size 80 40
+          mode direct
+        end
+        initial_state 3
+      end
+    end
+    title reach_point_controller
+    connector
+      id 4
+      input
+      external_data_connector_model
+        name vel_linear
+        type std_msgs/float64
+        position 696 102
+      end
+    end
+    connector
+      id 5
+      input
+      external_data_connector_model
+        name vel_angular
+        type std_msgs/float64
+        position 700 201
+      end
+    end
+    connector
+      id 6
+      output
+      external_data_connector_model
+        name cmd_pose
+        type ros_geometry_msgs/pose_stamped
+        position 106 285
+      end
+    end
+    connector
+      id 7
+      output
+      external_data_connector_model
+        name max_velocity
+        type ros_geometry_msgs/twist
+        position 111 317
+      end
+    end
+    connector
+      id 17
+      output
+      external_data_connector_model
+        name current_pose
+        type ros_geometry_msgs/pose
+        position 113 512
+      end
+    end
+    connector
+      id 29
+      input
+      external_event_connector_model
+        name point_reached
+        position 285 219
+      end
+    end
+    connection
+      id 8
+      priority 0
+      attached_data_connector_model
+        activity 2
+        attachment_name angular
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.670025 1.2
+      connector_id 5
+      data_connection_model 0
+    end
+    connection
+      id 9
+      priority 0
+      attached_data_connector_model
+        activity 2
+        attachment_name linear
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.485359 0.5
+      connector_id 4
+      data_connection_model 0
+    end
+    connection
+      id 10
+      priority 0
+      attached_data_connector_model
+        activity 3
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.509059 0.5
+      connector_id 4
+      data_connection_model 0
+    end
+    connection
+      id 11
+      priority 0
+      attached_data_connector_model
+        activity 3
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.889831 0.166667
+      connector_id 5
+      data_connection_model 0
+    end
+    connection
+      id 12
+      priority 0
+      connector_id 6
+      middle_point 0.369749 0.5
+      attached_data_connector_model
+        activity 2
+        attachment_name cmd_position
+        attachment_type ros_geometry_msgs/pose_stamped
+      end
+      data_connection_model 0
+    end
+    connection
+      id 13
+      priority 0
+      connector_id 7
+      middle_point 0.299175 0.445055
+      attached_data_connector_model
+        activity 2
+        attachment_name cmd_max_vel
+        attachment_type ros_geometry_msgs/twist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 18
+      priority 0
+      connector_id 17
+      middle_point 0.354359 0.5
+      attached_data_connector_model
+        activity 2
+        attachment_name current_position
+        attachment_type ros_geometry_msgs/pose
+      end
+      data_connection_model 0
+    end
+    connection
+      id 20
+      priority 0
+      transition_connector_model
+        abstract_state 2
+        position 0.632394 0
+      end
+      middle_point 7.2 -6.8
+      transition_connector_model
+        abstract_state 19
+        position 1 0.675
+      end
+        transition_connection_model
+        events finished
+        guard_expression std::abs(position.position.x - target.pose.position.x) < 0.1 && std::abs(position.position.y - target.pose.position.y) < 0.1
+      end
+    end
+    connection
+      id 21
+      priority 0
+      transition_connector_model
+        abstract_state 19
+        position 0 0.6
+      end
+      middle_point 0.5 0.5
+      transition_connector_model
+        abstract_state 3
+        position 1 0.775
+      end
+        transition_connection_model
+        events finished
+        guard_expression 
+      end
+    end
+    connection
+      id 22
+      priority 0
+      transition_connector_model
+        abstract_state 3
+        position 0.75 1
+      end
+      middle_point 0.680921 0.775281
+      transition_connector_model
+        abstract_state 2
+        position 0.239284 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 23
+      priority 0
+      connector_id 6
+      middle_point 0.767919 -0.00961538
+      middle_of_connection_id 22
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 24
+      priority 0
+      connector_id 6
+      middle_point 0.281699 0.4
+      middle_of_connection_id 20
+      data_to_transition_connection_model data target
+    end
+    connection
+      id 25
+      priority 0
+      connector_id 17
+      middle_point 0.184099 0.9
+      middle_of_connection_id 20
+      data_to_transition_connection_model data position
+    end
+    connection
+      id 26
+      priority 0
+      transition_connector_model
+        abstract_state 2
+        position 0.358926 1
+      end
+      middle_point 0.579983 3.615
+      transition_connector_model
+        abstract_state 2
+        position 1 0.783333
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 27
+      priority 0
+      connector_id 17
+      middle_point 0.0795219 0.6
+      middle_of_connection_id 26
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 30
+      priority 0
+      attached_event_connector_model
+        activity 19
+        attachment_name finished
+      end
+      middle_point 0.5 0.5
+      connector_id 29
+    end
+    parameter float64 krho 0
+    parameter float64 kalpha 0
+    parameter float64 kbeta 0
+  end
+end

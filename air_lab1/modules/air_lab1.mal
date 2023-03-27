@@ -1,0 +1,19 @@
+name air_lab1_march
+message_definitions std_msgs.mtd
+namespace air_lab1_march
+cpp_include air_lab1_march.h
+component
+  file components/air_lab1/reach_point.mhl
+end
+component
+  file components/air_lab1/reach_point_controller.mhl
+end
+component
+  file components/air_lab1/linear_angular_to_left_right_velocities.mhl
+end
+component
+  file components/air_lab1/velocity_controller.mhl
+end
+component
+  file components/air_lab1/waypoints_controller.mhl
+end

@@ -1,0 +1,194 @@
+project
+  activity_prototypes_libraries ros_geometry_msgs_tools.mal
+  component
+    super_state
+      timeout 0
+      title untitled
+      id 0
+      geometry 10 30 265 265
+      minimum_size 80 40
+      group
+        title untitled
+        id 1
+        geometry 10 30 245 225
+        minimum_size 100 80
+        processing_state
+          timeout 0
+          title decompose velocity
+          id 15
+          geometry 10 30 225 185
+          minimum_size 80 40
+          processing_graph
+            title untitled
+            id 16
+            geometry 0 0 225 185
+            minimum_size 80 40
+            processing_node
+              title twist
+              id 17
+              geometry 10 57 80 42
+              minimum_size 80 42
+              library ros_geometry_msgs_tools
+              description twist_dissassemble
+              mode direct
+              input_connector
+                name message
+                queue_size 1
+              end
+            end
+            processing_node
+              title linear
+              id 24
+              geometry 131 30 80 60
+              minimum_size 80 60
+              library ros_geometry_msgs_tools
+              description vector3_dissassemble
+              mode direct
+              input_connector
+                name message
+                queue_size 1
+              end
+            end
+            processing_node
+              title angular
+              id 25
+              geometry 135 115 80 60
+              minimum_size 80 60
+              library ros_geometry_msgs_tools
+              description vector3_dissassemble
+              mode direct
+              input_connector
+                name message
+                queue_size 1
+              end
+            end
+          end
+          activity_mode task
+          task_priority 2
+        end
+        initial_state 15
+      end
+    end
+    title velocity_controller
+    connector
+      id 6
+      input
+      external_data_connector_model
+        name linear
+        type std_msgs/float64
+        position 345 132
+      end
+    end
+    connector
+      id 7
+      input
+      external_data_connector_model
+        name angular
+        type std_msgs/float64
+        position 345 253
+      end
+    end
+    connector
+      id 8
+      output
+      external_data_connector_model
+        name cmd_vel
+        type ros_geometry_msgs/twist
+        position 47 70
+      end
+    end
+    connection
+      id 2
+      priority 0
+      transition_connector_model
+        abstract_state 0
+        position 0.1 0
+      end
+      middle_point 0.511111 -1.5
+      transition_connector_model
+        abstract_state 0
+        position 0.85 0
+      end
+        transition_connection_model
+        events 
+        guard_expression 
+      end
+    end
+    connection
+      id 9
+      priority 0
+      connector_id 8
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 17
+        attachment_name message
+        attachment_type ros_geometry_msgs/twist
+      end
+      data_connection_model 0
+    end
+    connection
+      id 14
+      priority 0
+      connector_id 8
+      middle_point 0.517092 -0.5
+      middle_of_connection_id 2
+      data_to_transition_connection_model event 
+    end
+    connection
+      id 26
+      priority 0
+      attached_data_connector_model
+        activity 17
+        attachment_name linear
+        attachment_type ros_geometry_msgs/vector3
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 24
+        attachment_name message
+        attachment_type ros_geometry_msgs/vector3
+      end
+      data_connection_model 0
+    end
+    connection
+      id 27
+      priority 0
+      attached_data_connector_model
+        activity 24
+        attachment_name x
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 6
+      data_connection_model 0
+    end
+    connection
+      id 28
+      priority 0
+      attached_data_connector_model
+        activity 17
+        attachment_name angular
+        attachment_type ros_geometry_msgs/vector3
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 25
+        attachment_name message
+        attachment_type ros_geometry_msgs/vector3
+      end
+      data_connection_model 0
+    end
+    connection
+      id 29
+      priority 0
+      attached_data_connector_model
+        activity 25
+        attachment_name z
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 7
+      data_connection_model 0
+    end
+  end
+end

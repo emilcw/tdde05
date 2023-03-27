@@ -1,0 +1,97 @@
+# Configuration
+deflogin on
+autodetach off
+
+caption always
+
+bindkey ^w screen
+bindkey ^p prev
+bindkey ^n next
+bindkey ^x quit
+bind q quit
+bindkey ^l windowlist
+bindkey ^e copy
+
+# Pre-defined tabs
+
+screen 0
+title "roscore"
+stuff "start-tdde05\015"
+stuff "roscore\015"
+
+screen 1
+title "rviz"
+stuff "start-tdde05; rviz -d `rospack find air_lab0`/rviz/labs.rviz\015"
+
+screen 2
+title "simple sim - obstacles"
+stuff "start-tdde05; sleep 5; rosrun air_simple_sim simple_sim.py _world:=world_1 __ns:=/husky0\015"
+
+
+screen 3
+title "State machine controller"
+stuff "start-tdde05; rosrun nodelet nodelet standalone air_lab1/husky_control_node __ns:=/husky0\015"
+
+screen 4
+title "rqt"
+stuff "start-tdde05; rqt __ns:=/husky0\015"
+
+screen 5
+title "OCC"
+stuff "start-tdde05; rosrun air_lab2 ls_to_occ __ns:=/husky0 scan:=lidar\015"
+
+screen 6
+title "Display OCC"
+stuff "start-tdde05; rosrun air_lab2 occ_to_display __ns:=/husky0\015"
+
+screen 7
+title "Motion planner"
+stuff "start-tdde05; rosrun air_lab2 motion_planner __ns:=/husky0\015"
+
+screen 8
+title "movetopoint"
+stuff "start-tdde05; sleep 5; rosrun air_lab2 move_to_point.py __ns:=/husky0 _robot_frame:=husky0/base_footprint planned_path:=cmd_waypoints\015"
+
+screen 9
+title "tst executor"
+stuff "start-tdde05; rosrun air_lab3 tst_executor.py __ns:=/husky0\015"
+
+#screen 10
+#title "call for echo"
+#stuff "start-tdde05; sleep 5; rosservice call /husky0/execute_tst \"tst_file: '`rospack find air_tsts`/tsts/echo.json'\"\015"
+
+#screen 10
+#title "call drive to"
+#stuff "start-tdde05; sleep 5; rosservice call /husky0/execute_tst \"tst_file: '`rospack find air_tsts`/tsts/drive_to.json'\"\015"
+
+#screen 10
+#title "call explore"
+#stuff "start-tdde05; sleep 5; rosservice call /husky0/execute_tst \"tst_file: '`rospack find air_tsts`/tsts/explore.json'\"\015"
+
+#screen 10
+#title "call explore and record"
+#stuff "start-tdde05; sleep 5; rosservice call /husky0/execute_tst \"tst_file: '`rospack find air_tsts`/tsts/explore_record.json'\"\015"
+
+#screen 10
+#title "call for drive to repeat"
+#stuff "start-tdde05; sleep 5; rosservice call /husky0/execute_tst \"tst_file: '`rospack find air_tsts`/tsts/drive_to_repeat.json'\"\015"
+
+screen 10
+title "SPARQL database"
+stuff "start-tdde05; sleep 5; roslaunch lrs_kdb start_server.launch __ns:=/husky0\015"
+
+#screen 11
+#title "record semantic"
+#stuff "start-tdde05; sleep 5; rosservice call /husky0/execute_tst \"tst_file: '`rospack find air_tsts`/tsts/explore_record_semantic.json'\"\015"
+
+screen 12
+title "visualization"
+stuff "start-tdde05; sleep 5; rosrun air_lab3 visualization.py __ns:=/husky0\015"
+
+screen 13
+title "make json file"
+stuff "start-tdde05; sleep 5; rosrun air_lab3 drive_to_humans.py __ns:=/husky0\015"
+
+screen 11
+title "drive to humans"
+stuff "start-tdde05; sleep 5; rosservice call /husky0/execute_tst \"tst_file: 'drive_to_humans.json'\"\015"

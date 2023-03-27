@@ -1,0 +1,339 @@
+project
+  activity_prototypes_libraries std_lib.mal math.mal
+  processing_project
+    processing_graph
+      title untitled
+      id 0
+      geometry 0 0 587.203 193
+      minimum_size 80 40
+      processing_node
+        title   lr * angular
+        id 3
+        geometry 136 84 86.5625 40
+        minimum_size 80 40
+        library march_math
+        description multiplication
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title lr
+        id 5
+        geometry 10 34 80 40
+        minimum_size 80 40
+        library march_std_lib
+        description output_float64
+        mode direct
+        input_connector
+          name value
+          queue_size 1
+        end
+        parameter_references
+          value left_right_distance
+        end
+      end
+      processing_node
+        title l - lr * angular
+        id 7
+        geometry 301 31 94.6719 40
+        minimum_size 80 40
+        library march_math
+        description substraction
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title (l - lr * angular) / R
+        id 8
+        geometry 453 30 124.203 40
+        minimum_size 80 40
+        library march_math
+        description division
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title (l + lr * angular) / R
+        id 9
+        geometry 447 137 127.703 40
+        minimum_size 80 40
+        library march_math
+        description division
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+      processing_node
+        title R
+        id 10
+        geometry 313 96 80 40
+        minimum_size 80 40
+        library march_std_lib
+        description output_float64
+        mode direct
+        input_connector
+          name value
+          queue_size 1
+        end
+        parameter_references
+          value wheel_radius
+        end
+      end
+      processing_node
+        title l + lr * angular
+        id 11
+        geometry 299 143 98.1719 40
+        minimum_size 80 40
+        library march_math
+        description addition
+        mode direct
+        input_connector
+          name a
+          queue_size 1
+        end
+        input_connector
+          name b
+          queue_size 1
+        end
+      end
+    end
+    title linear_angular_to_left_right_velocities
+    connector
+      id 1
+      output
+      external_data_connector_model
+        name linear_velocity
+        type std_msgs/float64
+        position 229 39
+      end
+    end
+    connector
+      id 2
+      output
+      external_data_connector_model
+        name angular_velocity
+        type std_msgs/float64
+        position 100 116
+      end
+    end
+    connector
+      id 17
+      input
+      external_data_connector_model
+        name left_velocity
+        type std_msgs/float64
+        position 642 99
+      end
+    end
+    connector
+      id 24
+      input
+      external_data_connector_model
+        name right_velocity
+        type std_msgs/float64
+        position 638 145
+      end
+    end
+    connection
+      id 4
+      priority 0
+      connector_id 2
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 3
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 6
+      priority 0
+      attached_data_connector_model
+        activity 5
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 3
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 12
+      priority 0
+      connector_id 1
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 7
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 13
+      priority 0
+      attached_data_connector_model
+        activity 3
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 7
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 15
+      priority 0
+      attached_data_connector_model
+        activity 7
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 8
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 16
+      priority 0
+      attached_data_connector_model
+        activity 10
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 8
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 18
+      priority 0
+      attached_data_connector_model
+        activity 8
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 17
+      data_connection_model 0
+    end
+    connection
+      id 19
+      priority 0
+      attached_data_connector_model
+        activity 3
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 11
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 20
+      priority 0
+      connector_id 1
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 11
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 21
+      priority 0
+      attached_data_connector_model
+        activity 11
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 9
+        attachment_name a
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 22
+      priority 0
+      attached_data_connector_model
+        activity 10
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      attached_data_connector_model
+        activity 9
+        attachment_name b
+        attachment_type std_msgs/float64
+      end
+      data_connection_model 0
+    end
+    connection
+      id 25
+      priority 0
+      attached_data_connector_model
+        activity 9
+        attachment_name value
+        attachment_type std_msgs/float64
+      end
+      middle_point 0.5 0.5
+      connector_id 24
+      data_connection_model 0
+    end
+    parameter float64 wheel_radius 0.16
+    parameter float64 left_right_distance 0.55
+  end
+end

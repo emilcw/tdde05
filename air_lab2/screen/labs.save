@@ -1,0 +1,35 @@
+# Configuration
+deflogin on
+autodetach off
+
+caption always
+
+bindkey ^w screen
+bindkey ^p prev
+bindkey ^n next
+bindkey ^x quit
+bind q quit
+bindkey ^l windowlist
+bindkey ^e copy
+
+# Pre-defined tabs
+
+screen 0
+title "roscore"
+stuff "start-tdde05\015"
+stuff "roscore\015"
+
+https://gitlab.liu.se/tdde05_students/air_labs.git master
+
+screen 1
+title "simple sim - obstacles"
+stuff "start-tdde05; rosrun air_simple_sim simple_sim.py _world:=world_1 __ns:=/husky0\015"
+
+
+screen 3
+title "State machine controller"
+stuff "start-tdde05; rosrun nodelet nodelet standalone air_lab1/husky_control_node __ns:=/husky0\015"
+
+screen 4
+title "rqt"
+stuff "start-tdde05; rqt __ns:=/husky0\015"
